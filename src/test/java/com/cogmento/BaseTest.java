@@ -18,7 +18,7 @@ public abstract class BaseTest {
 
     @AfterMethod
     public void tearDown(){
-//        Driver.quitDriver();
-//        softAssert.assertAll();
+        Driver.quitDriver();
+        softAssert.assertAll();
     }
 }
