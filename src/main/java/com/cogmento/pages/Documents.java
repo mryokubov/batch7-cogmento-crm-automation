@@ -3,13 +3,14 @@ package com.cogmento.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
+import org.testng.Assert;
+
 import java.util.HashMap;
 import java.util.List;
 
 public class Documents extends HomePage{
-    public Documents(WebDriver driver, SoftAssert softAssert) {
-        super(driver, softAssert);
+    public Documents(WebDriver driver) {
+        super(driver);
     }
 
     @FindBy(xpath = "//div[@class='ui action input']/input")
@@ -36,22 +37,22 @@ public class Documents extends HomePage{
     }
 
     private void verifyRootAndExport(HashMap<String,String> data){
-        softAssert.assertTrue(searchDocumentInput.isEnabled(),"Search input is nt enabled");
-        softAssert.assertTrue(exportsFolderBtn.isEnabled(),"Export button is nt enabled");
+        Assert.assertTrue(searchDocumentInput.isEnabled(),"Search input is nt enabled");
+        Assert.assertTrue(exportsFolderBtn.isEnabled(),"Export button is nt enabled");
         exportsFolderBtn.click();
 
         for (int i = 0; i < deleteFileBtns.size(); i++) {
-            softAssert.assertTrue(deleteFileBtns.get(i).isEnabled(),"Delete Button "+deleteFileBtns.get(i)+" is not enabled");
+            Assert.assertTrue(deleteFileBtns.get(i).isEnabled(),"Delete Button "+deleteFileBtns.get(i)+" is not enabled");
 
         }
         for (int i = 0; i < addCommentBtns.size(); i++) {
-            softAssert.assertTrue(addCommentBtns.get(i).isEnabled(), "Delete Button " + addCommentBtns.get(i) + " is not enabled");
+            Assert.assertTrue(addCommentBtns.get(i).isEnabled(), "Delete Button " + addCommentBtns.get(i) + " is not enabled");
             addCommentBtns.get(i).click();
             addFileCommentBtn.click();
             addNoteInput.sendKeys(data.get("Comments"));
-            softAssert.assertTrue(saveNoteBtn.isEnabled(), "save note button is not enabled");
+            Assert.assertTrue(saveNoteBtn.isEnabled(), "save note button is not enabled");
             saveNoteBtn.click();
-            softAssert.assertEquals(myNote, data.get("Comments"), "Note is not there");
+            Assert.assertEquals(myNote, data.get("Comments"), "Note is not there");
             backToExportsBtn.click();
         }
     }

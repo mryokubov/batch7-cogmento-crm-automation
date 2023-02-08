@@ -12,8 +12,8 @@ public class CalendarTest extends BaseTest{
 
     @Test(dataProvider = "calendar")
     public void createEventCalendar(HashMap<String,String> data){
-        Login login = new Login(driver, softAssert);
-        Calendar calendar=new Calendar(driver,softAssert);
+        Login login = new Login(driver);
+        Calendar calendar=new Calendar(driver);
         login.navigateToLoginPage();
         login.login();
         calendar.createEventInCalendar(data);

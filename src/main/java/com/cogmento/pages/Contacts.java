@@ -4,17 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
 
 public class Contacts extends HomePage{
-    public Contacts(WebDriver driver, SoftAssert softAssert) {
-        super(driver, softAssert);
+    public Contacts(WebDriver driver) {
+        super(driver);
     }
 
-    @FindBy(xpath = "//button[text()='Save']")
+    @FindBy(xpath = "//button[text()='Create']")
     protected WebElement createContactButton;
+
+    @FindBy(xpath = "//button[text()='Save']")
+    protected WebElement saveContactButton;
 
     @FindBy(name = "first_name")
     protected WebElement firstNameInput;
@@ -146,7 +150,7 @@ public class Contacts extends HomePage{
 
     public void createContact(HashMap<String,String> data) {
         navigate("contacts");
-        softAssert.assertTrue(createContactButton.isEnabled(), "Create button is not enabled");
+        Assert.assertTrue(createContactButton.isEnabled(), "Create button is not enabled");
         createContactButton.click();
 
         firstNameInput.sendKeys(data.get("firstname"));
@@ -218,8 +222,8 @@ public class Contacts extends HomePage{
 
         imagePathInput.sendKeys(data.get("imagePath"));
 
-        softAssert.assertTrue(createContactButton.isEnabled(), "Create Customer is not enabled");
-        createContactButton.click();
+        Assert.assertTrue(saveContactButton.isEnabled(), "Create Customer is not enabled");
+        saveContactButton.click();
 
     }
 

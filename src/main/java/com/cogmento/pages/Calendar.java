@@ -4,14 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
-
 import java.util.HashMap;
 
 public class Calendar extends HomePage{
 
-    public Calendar(WebDriver driver, SoftAssert softAssert) {
-        super(driver, softAssert);
+    public Calendar(WebDriver driver) {
+        super(driver);
     }
 
     @FindBy(xpath = "//button[text()='Create']")

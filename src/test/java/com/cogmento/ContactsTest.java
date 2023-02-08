@@ -12,8 +12,9 @@ public class ContactsTest extends BaseTest{
 
     @Test(dataProvider = "contacts")
     public void createContactPositive(HashMap<String,String> data) throws InterruptedException {
-        Login login = new Login(driver, softAssert);
-        Contacts contacts = new Contacts(driver, softAssert);
+        extentTest = reports.startTest("Cogmento CRM Create Contact Positive Test");
+        Login login = new Login(driver);
+        Contacts contacts = new Contacts(driver);
 
         login.navigateToLoginPage();
         login.login();

@@ -11,8 +11,8 @@ import java.util.HashMap;
 public class CompanyTest extends BaseTest{
     @Test(dataProvider = "companies")
     public void createCompanyPositive(HashMap<String,String> data) {
-        Login login = new Login(driver, softAssert);
-        Companies companies = new Companies(driver,softAssert);
+        Login login = new Login(driver);
+        Companies companies = new Companies(driver);
         login.navigateToLoginPage();
         login.login();
         companies.createNewCompany(data);

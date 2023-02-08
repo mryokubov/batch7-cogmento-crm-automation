@@ -5,14 +5,13 @@ import com.cogmento.pages.Login;
 import com.cogmento.utils.ExcelReader;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.util.HashMap;
 
 public class DocumentsTest extends  BaseTest{
     @Test(dataProvider = "documents")
     public void verifyDocumentsPageFunctionality(HashMap<String,String> data){
-        Login login = new Login(driver, softAssert);
-        Documents documents = new Documents(driver,softAssert);
+        Login login = new Login(driver);
+        Documents documents = new Documents(driver);
         login.navigateToLoginPage();
         login.login();
         documents.verifyDocFunctionality(data);

@@ -11,8 +11,8 @@ public class DealTest extends BaseTest{
 
     @Test(dataProvider = "deal")
     public void editDeals(HashMap<String, String> data){
-        Login login= new Login(driver,softAssert);
-        Deals deals = new Deals(driver, softAssert);
+        Login login= new Login(driver);
+        Deals deals = new Deals(driver);
         login.navigateToLoginPage();
         login.login();
         deals.editDealsDetails(data);

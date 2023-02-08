@@ -8,8 +8,8 @@ import org.testng.asserts.SoftAssert;
 import java.util.HashMap;
 
 public class Deals extends HomePage{
-    public Deals(WebDriver driver, SoftAssert softAssert) {
-        super(driver, softAssert);
+    public Deals(WebDriver driver) {
+        super(driver);
     }
 
     @FindBy(xpath = "//td//following-sibling::td[@class='right aligned collapsing options-buttons-container']/a//following-sibling::a/button/i")

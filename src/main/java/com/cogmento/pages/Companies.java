@@ -4,12 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
+import org.testng.Assert;
+
 import java.util.HashMap;
 
 public class Companies extends HomePage{
-    public Companies(WebDriver driver, SoftAssert softAssert) {
-        super(driver, softAssert);
+    public Companies(WebDriver driver) {
+        super(driver);
     }
 
     @FindBy(xpath = "//button[@class='ui linkedin button']//i[@class='save icon']")
@@ -100,8 +101,8 @@ public class Companies extends HomePage{
 
     private void fillCreateNewCompanyForm(HashMap<String,String> data){
 
-        softAssert.assertTrue(createCompanyBtn.isDisplayed(), "Create button is not displayed");
-        softAssert.assertTrue(createCompanyBtn.isEnabled(), "Create button is not enabled");
+        Assert.assertTrue(createCompanyBtn.isDisplayed(), "Create button is not displayed");
+        Assert.assertTrue(createCompanyBtn.isEnabled(), "Create button is not enabled");
         createCompanyBtn.click();
         companyNameInput.sendKeys(data.get("Name"));
         websiteInput.sendKeys(data.get("Website"));
